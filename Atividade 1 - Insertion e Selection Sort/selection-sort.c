@@ -1,11 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-
+int main(int argc, char* argv[]) {
     FILE *f;
-    char c;
-    f=fopen("couting.txt","r");
+    char *filename;
+    if(argc != 2)
+    {
+        printf( "Missing filename");
+        return 0; //should be two arguments, exe name & file path/name
+    }
+    else{
+        filename=argv[1];
+    }
+    f=fopen(filename,"r");
+
     int instancias[5000];
     int n = 100;
     int i_min,temp;
