@@ -5,7 +5,7 @@ int main() {
 
     FILE *f;
     char c;
-    f=fopen("instancias-num/couting.txt","r");
+    f=fopen("couting.txt","r");
     int instancias[5000];
     int n = 100;
     int i_min,temp;
