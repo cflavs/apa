@@ -1,6 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void counting_sort(int A[],int B[],int n, int exp, int k){
+    int C[k];
+    for(int i=0;i<k;i++)
+        C[i] = 0; //inicializa vetor
+    
+    for (int j=0; j<n;j++){
+        C[A[j]] += 1; //calcula a frequencia dos valores
+    }
+    for (int i=0;i<k-1;i++){
+        C[i+1] = C[i] + C[i+1];
+    }
+
+    int aux=0;
+    for(int i=n-1;i>-1;i--){ //ordena 
+        aux = A[i];
+        C[aux]-=1;
+        B[C[aux]]=aux;
+    }
+}
 int main(int argc, char* argv[]) {
     FILE *f;
     char *filename;
@@ -23,8 +42,6 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < n; i++){
         fscanf(f, "%d", &A[i]);
     }
-    /////Counting-sort
-
     // encontrar maximo valor
     int k=A[0];
     for(int i=1;i<n;i++){
@@ -32,27 +49,17 @@ int main(int argc, char* argv[]) {
             k = A[i];
     }
     k+=1;
-    int C[k];
-    for(int i=0;i<k;i++)
-        C[i] = 0; //inicializa vetor
-    
-    for (int j=0; j<n;j++){
-        C[A[j]] += 1; //calcula a frequencia dos valores
-    }
-    for (int i=0;i<k-1;i++){
-        C[i+1] = C[i] + C[i+1];
-    }
 
-    int aux=0;
-    for(int i=n-1;i>-1;i--){ //ordena 
-        aux = A[i];
-        C[aux]-=1;
-        B[C[aux]]=aux;
-    }
+    /////Counting-sort
+    //counting_sort(A,B,n);
+
+    /// Radix-sort
+    for (int exp = 1; k/exp > 0; exp *= 10)
+        counting_sort(A, B, n, exp,k);
     //Exibe instancias ordenadas
     for(int i=0;i<n;i++)
         printf("%d\n", B[i]);
 
-    //fclose(f);
+    fclose(f);
     return 0;
 }
