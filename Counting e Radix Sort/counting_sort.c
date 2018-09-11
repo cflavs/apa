@@ -54,8 +54,8 @@ int main(int argc, char* argv[]) {
     //counting_sort(A,B,n);
 
     /// Radix-sort
-    for (int exp = 1; k/exp > 0; exp *= 10)
-        counting_sort(A, B, n, exp,k);
+    for (int d = 1; k/d > 0; d *= 10)
+        counting_sort(A, B, n, d,k);
     //Exibe instancias ordenadas
     for(int i=0;i<n;i++)
         printf("%d\n", B[i]);
