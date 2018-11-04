@@ -15,8 +15,6 @@ void maxHeapify(int A[], int tamanho_heap, int i)
  
     if (esquerda < tamanho_heap && A[esquerda] > A[maior])
         maior = esquerda;
-    else
-        maior = i;
     if (direita < tamanho_heap && A[direita] > A[maior])
         maior = direita;
  
