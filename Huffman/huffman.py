@@ -13,10 +13,10 @@ class Huffman:
             Parâmetros: lista - lista com os nós da árvore de huffman
         """
         while len(lista) > 1: #enquanto a lista possui mais que um elemento (i.e. enquanto a lista não possui apenas um nó com a raiz da árvore)
-            left = heapExtractMax(lista,len(lista)) #encontra o menor nó da lista
-            right = heapExtractMax(lista,len(lista)) #encontra o segundo menor nó da lista
+            left = heapExtractMin(lista,len(lista)) #encontra o menor nó da lista
+            right = heapExtractMin(lista,len(lista)) #encontra o segundo menor nó da lista
             father= Node(left.freq+right.freq,None,left,right) #cria um nó pai tendo como filhos os dois menores nós da lista
-            maxHeapInsert(lista,father.freq,len(lista),father) #insere o nó pai na árvore utilizando de forma a manter a propriedade de min-heap
+            heapInsert(lista,father.freq,len(lista),father) #insere o nó pai na árvore utilizando de forma a manter a propriedade de min-heap
     def printRoot(self,root):
         """
             Função que exibe o nó raiz da árvore

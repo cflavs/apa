@@ -31,7 +31,7 @@ def encoding(h,huffman_tree,path):
     text,dict_values = read_file(path) #texto de entrada e dicionário com os caracteres e suas frequências
     for char, freq in dict_values.items(): #cria um nó folha com cada caracter encontrado no arquivo e suas respectivas sequências
         huffman_tree.append(Node(freq,char))
-    buildMaxHeap(huffman_tree,len(huffman_tree)) #ordena a lista construindo um heap mínimo
+    buildHeap(huffman_tree,len(huffman_tree)) #ordena a lista construindo um heap mínimo
     h.insere(huffman_tree) #constrói a árvore de huffman somando os nós de menor frequência do dicionário
     h.encoding(huffman_tree[0],table,symbol, code) #codifica a entrada
     for i in range(len(text)): #salva a codificação em um arquivo
