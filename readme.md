@@ -1,6 +1,6 @@
 # Estrutura de Dados e Complexidade de Algoritmos
 
-Esse repositório contém as implementações dos algoritmos vistos na disciplian de Estrutura de Dados e Complexidade de Algoritmos. 
+Esse repositório contém as implementações dos algoritmos vistos na disciplina de Estrutura de Dados e Complexidade de Algoritmos. 
 
 ## Estrutura do Repositório
 
