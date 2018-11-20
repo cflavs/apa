@@ -26,3 +26,13 @@ Contém a implementação do algoritmo de huffman para codificação e decodific
 $ python3 main.py -encode_path files/nome_do_arquivo_teste.txt -decode_path files/encoding.txt
 ```
 Em que, nome_do_arquivo_teste é o nome do arquivo com o texto a ser codificado e files/encoding.txt é o arquivo codificado gerado pelo próprio algoritmo Huffman após a codificação. Dois exemplos de arquivos textos podem ser encontrados no diretório Huffman/files (abracadabra.txt e lorem.txt).
+
+### Metaheuristica
+
+Contém a implementação do algoritmo de clusterização K-means, e da metaheuristica Variable neighborhood search (VNS) utilizando Python. Para rodar o algoritmo, utilize o comando abaixo dentro do diretório Huffman:
+
+```sh
+$ python3 heuristics.py
+```
+
+
