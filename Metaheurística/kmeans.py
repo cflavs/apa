@@ -32,7 +32,7 @@ def main():
     ax.set_xlabel('$x_0$')
     ax.set_ylabel('$x_1$');
     plt.show()
-    maxiter = 3
+    maxiter = 10
     classes = np.zeros(X.shape[0], dtype=np.int)
     distances = np.zeros([X.shape[0], k], dtype=np.float64)
     centroids = initialize_clusters(X, k)

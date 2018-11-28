@@ -1,8 +1,9 @@
 import numpy as np
 from kmeans import *
 from sklearn import datasets
-def vns(centroid,X,num_clusters,distances,classes):
-    d = np.zeros([X.shape[0], num_clusters], dtype=np.float64)
+def vns(centroid,X,num_clusters,distances,classes,y):
+    d = np.array([[0 for _ in range(x)] for x in [sum(y == (i)) for i in range(num_clusters)]])
+    print(d.shape)
     k = 0
     ssd = []
     ssd_ = []
@@ -19,21 +20,24 @@ def vns(centroid,X,num_clusters,distances,classes):
         while k < num_clusters:
             centroids = initialize_clusters(X, num_clusters)
             for i, c in enumerate(centroids):
-                d[:, i] = get_distances(c, X)
-                media_[i] = np.mean(d[:,i])
+                d[i] = get_distances(c, X[y==i])
+                media_[i] = np.mean(d[i])
             for i in range(num_clusters):
                 if media_[i] < media[i]:
                     media[i] = media_[i]
-                    centroid = centroids
-                    classes = np.argmin(d, axis=1)
+                    centroid[i] = centroids[i]
                     k=0
             else: 
                 k +=1
+    distances = np.zeros([X.shape[0], k], dtype=np.float64)
+    for i, c in enumerate(centroids):
+        distances[:, i] = get_distances(c, X)
+    classes = np.argmin(distances, axis=1)
     return classes, centroid
 
 
-classes, centroids,distances,X,k = main()
-classes, centroids = vns(centroids,X,k,distances,classes)
+classes, centroids,distances,X,k,y = main()
+classes, centroids = vns(centroids,X,k,distances,classes,y)
 group_colors = ['blue', 'red', 'green','violet','yellow', 'purple','grey','olive','navy', 'cyan']
 colors = [group_colors[j] for j in classes]
 
